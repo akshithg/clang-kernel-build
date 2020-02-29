@@ -20,9 +20,8 @@ clang:
 	chromium/clang/scripts/update.py
 
 update_clang:
-	cd $(WORLD)/clang ;\
-	git pull ;\
-	cd .. ;\
+	cd chromium/clang ;\
+	git pull
 	chromium/clang/scripts/update.py
 
 linux:
@@ -30,4 +29,12 @@ linux:
 	make CC=$(CLANG_PATH)/clang defconfig ;\
 	make CC=$(CLANG_PATH)/clang -j`nproc` 2>&1 | tee build.log
 
-# TODO linux.img qemu
+linux.img:
+	./create_os_image.sh
+
+qemu:
+	./run_qemu.sh
+
+
+gdb:
+	gdb -x gdb.script

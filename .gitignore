@@ -2,3 +2,8 @@ linux-stable
 docker-to-linux
 clang
 third_party
+*.img
+ssh
+vm_pid
+buster
+.gdb_history
